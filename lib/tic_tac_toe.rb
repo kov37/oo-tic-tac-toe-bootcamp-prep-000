@@ -100,20 +100,22 @@ class TicTacToe
   end
 
   def winner
-    won? ? board[won[0]] : nil
-end
+    won? ? @board[won[0]] : nil
+  end
 
 
-def play(board)
-  while !over?(board)
-    turn(board)
-    if won?(board)
-      winning_row = won?(board)
-      puts "Congratulations #{board[winning_row[0]]}!"
-      break
-    elsif draw?(board)
-      puts "Cat's Game!"
+  def play
+    while !over?
+      turn
+    end
+    
+    if won?
+      winning_row = won?
+        puts "Congratulations #{@fboard[winning_row[0]]}!"
+        break
+      elsif draw?
+        puts "Cat's Game!"
+      end
     end
   end
-end
 end
