@@ -111,7 +111,7 @@ class TicTacToe
     
     if won?
       winning_row = won?
-        puts "Congratulations #{@fboard[winning_row[0]]}!"
+      puts "Congratulations #{@board[winning_row[0]]}!"
     elsif draw?
         puts "Cat's Game!"
     end
