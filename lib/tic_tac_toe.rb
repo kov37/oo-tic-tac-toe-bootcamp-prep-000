@@ -66,5 +66,54 @@ class TicTacToe
     (turn_count % 2).even? ? 'X' : 'O'
   end
   
-  
+  def won?
+    for win_combination in WIN_COMBINATIONS do 
+      win_index_1 = win_combination[0]
+      win_index_2 = win_combination[1]
+      win_index_3 = win_combination[2]
+      if (@board[win_index_1] == 'X' &&
+          @board[win_index_2] == 'X' &&
+          @board[win_index_3] == 'X') || 
+          (@board[win_index_1] == 'O' &&
+           @board[win_index_2] == 'O' &&
+           @board[win_index_3] == 'O')
+      return win_combination
+    end
+  end
+  false
+  end
+
+  def full?
+    @board.all? { |piece| piece == "X" || piece == "O" }
+  end
+
+  def draw?
+    if full? && !won?
+      true
+    else
+      false
+    end
+  end
+
+  def over?(board)
+    full? || won? || draw? ? true : false
+  end
+
+  def winner
+    won? ? board[won[0]] : nil
+end
+
+
+def play(board)
+  while !over?(board)
+    turn(board)
+    if won?(board)
+      winning_row = won?(board)
+      puts "Congratulations #{board[winning_row[0]]}!"
+      break
+    elsif draw?(board)
+      puts "Cat's Game!"
+    end
+  end
+end
 end
